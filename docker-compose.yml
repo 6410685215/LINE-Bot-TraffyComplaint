@@ -1,0 +1,61 @@
+version: '3.7'
+
+services:
+  liff-service:
+    build: ./liff-service
+    container_name: liff-service
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./liff-service:/app
+      - /app/node_modules
+    networks:
+      - my-network
+
+  line-bot:
+    build: ./line-bot
+    container_name: line-bot
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./line-bot:/app
+      - /app/node_modules
+    networks:
+      - my-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/public:/var/www/public:ro
+      
+      # Option 1 
+      # - ./nginx/certbot/www:/var/www/certbot:ro
+      # - ./nginx/certbot/conf:/etc/letsencrypt:ro
+
+      # Option 2
+      # - /var/www/html:/var/www/certbot:ro
+      # - /etc/letsencrypt:/etc/letsencrypt:ro
+      
+      # For Dev
+      - /home/patcharapon/certbot/www:/var/www/certbot:ro
+      - /home/patcharapon/certbot/conf:/etc/letsencrypt:ro
+    depends_on:
+      - line-bot
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
