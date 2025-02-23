@@ -101,3 +101,14 @@ version: '3.7'
 ```bash
 docker-compose up
 ```
+
+## API Usage
+- [LINE Messaging API](https://developers.line.biz/en/docs/messaging-api/overview/)
+    1. channel secret
+    2. channel access token
+- [LINE LIFF API](https://developers.line.biz/en/docs/liff/overview/)
+    1. LIFF ID
+- [OpenStreetMap API by Traces Track](https://www.tracetrek.com/)
+    1. API Key
+- [RapidAPI](https://rapidapi.com/)
+    1. API Key
