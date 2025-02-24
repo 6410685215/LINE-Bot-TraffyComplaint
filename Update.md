@@ -48,7 +48,7 @@ line-bot/
   ├── node_modules/ ***    # Dependencies
   ├── src/
   │    ├── handlers/       # Handlers for Line Webhook
-  │    │    ├── default-message.ts
+  │    │    └── default-message.ts
   │    └── index.ts        # Main file
   ├── .env                 # Environment Variables
   ├── Dockerfile           # Dockerfile for Line Chatbot
@@ -81,3 +81,5 @@ liff-service/
   ├── tsconfig.json        # Typescript config
   └── vite.config.ts       # Vite config
   ```
+#### 📌 sequenceDiagram
+![image](./sequenceDiagram.png)
