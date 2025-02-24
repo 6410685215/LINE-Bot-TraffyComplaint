@@ -71,7 +71,10 @@ liff-service/
   │    │    └── Map.tsx
   │    ├── pages/          # Pages
   │    │    └── Inform.tsx
-  │    └── App.tsx         # Main file
+  │    ├── App.css         # CSS
+  │    ├── App.tsx         # Routers
+  │    ├── main.tsx        # Main file
+  │    └── vite-env.d.ts   # Vite Environment Variables
   ├── .env                 # Environment Variables
   ├── Dockerfile           # Dockerfile for LIFF Service
   ├── index.html           # HTML file
