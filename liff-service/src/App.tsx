@@ -30,7 +30,6 @@ function App() {
       setIsInClient(true);
       initLiff();
     }
-    // alert(window.location.href);
   }, []);
 
   return (

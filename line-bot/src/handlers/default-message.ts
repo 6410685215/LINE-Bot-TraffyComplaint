@@ -6,6 +6,7 @@ import {
 export const defaultMessage = (event: webhook.Event): TextMessage => {
     let LIFF_URL = process.env.LIFF_URL || '';
     let GROUP_ID = (event.source?.type === 'group' ? event.source.groupId : '') || '';
+    let PUBLIC_URL = process.env.PUBLIC_URL || '';
 
     return {
         type: 'text',
@@ -14,6 +15,7 @@ export const defaultMessage = (event: webhook.Event): TextMessage => {
             items: [
                 {
                     type: 'action',
+                    imageUrl: `${PUBLIC_URL}/quickreply-icons/megaphone.png`,
                     action: {
                         type: 'uri',
                         label: 'แจ้งเรื่อง',
