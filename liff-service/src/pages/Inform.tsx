@@ -12,13 +12,8 @@ export default function Inform() {
 
     useEffect(() => {
         const initLoading = document.getElementById('init-loading');
-        const statusOk = document.getElementById('status-ok');
-        
-        if (statusOk) {
-          initLoading?.remove();
-        }
-    }
-    , []);
+            initLoading?.remove();
+    }, []);
 
     const [userName, setUserName] = useState("");
     useEffect(() => {

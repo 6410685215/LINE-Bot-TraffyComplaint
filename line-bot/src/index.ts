@@ -32,6 +32,12 @@ const app: Application = express();
 
 // Keywords for calling Traffy Fondue
 const triggerWords = ["traffy", "fondue", "traffy fondue", "traffyfondue"];
+const isTriggerWord = (text: string): boolean => {
+  return triggerWords.includes(text.trim().toLowerCase());
+};
+const isSelfMention = (mention: webhook.Mentionee): boolean => {
+  return mention.type === 'user' && (mention.isSelf ?? false);
+};
 // Function handler to receive the text.
 const textEventHandler = async (event: webhook.Event): Promise<MessageAPIResponseBase | undefined> => {
   // Process all variables here.
@@ -41,8 +47,8 @@ const textEventHandler = async (event: webhook.Event): Promise<MessageAPIRespons
     return;
   }
 
-  // Check if the message contains any trigger words.
-  if (!triggerWords.includes(event.message.text.trim().toLowerCase())) {
+  // Check mentions and trigger words.
+  if (!event.message.mention?.mentionees?.some(isSelfMention) && !isTriggerWord(event.message.text)) {
     return;
   }
 

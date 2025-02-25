@@ -24,6 +24,7 @@ export const defaultMessage = (event: webhook.Event): TextMessage => {
                 },
                 {
                     type: 'action',
+                    imageUrl: `${PUBLIC_URL}/quickreply-icons/foldercheck.png`,
                     action: {
                         type: 'uri',
                         label: 'ตรวจสอบสถานะ',
