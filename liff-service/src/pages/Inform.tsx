@@ -10,6 +10,16 @@ import flexMessage from "../assets/message";
 
 export default function Inform() {
 
+    useEffect(() => {
+        const initLoading = document.getElementById('init-loading');
+        const statusOk = document.getElementById('status-ok');
+        
+        if (statusOk) {
+          initLoading?.remove();
+        }
+    }
+    , []);
+
     const [userName, setUserName] = useState("");
     useEffect(() => {
         const getProfile = async () => {
@@ -152,7 +162,7 @@ export default function Inform() {
     };
 
     return (
-        <div className="inform-container">
+        <div className="inform-container" id="status-ok">
             {/* Header */}
             <div className="card m-3 bg-dark text-white">
                 <div className="card-body d-flex align-items-center">
