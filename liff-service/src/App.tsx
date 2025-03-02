@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import liff from "@line/liff";
 import "./App.css";
 
+// import Inform from "./pages/Inform";
 import Inform from "./pages/Inform";
 
 function App() {
@@ -18,18 +19,18 @@ function App() {
       try {
         await liff.init({ liffId: import.meta.env.VITE_LIFF_ID });
       } catch (e) {
-        alert(`${e}`);
+        alert(`${e}` + "\n" + `${window.location.href}`);
       }
     };
 
-    if (liff.isInClient()) {
-      const { userAgent } = navigator;
-      if (!liff.isInClient() && userAgent.includes("Line")) {
-        window.location.href = liff.permanentLink.createUrl();
-      }
+    // if (liff.isInClient()) {
+    //   const { userAgent } = navigator;
+    //   if (!liff.isInClient() && userAgent.includes("Line")) {
+    //     window.location.href = liff.permanentLink.createUrl();
+    //   }
       setIsInClient(true);
       initLiff();
-    }
+    // }
     const initLoading = document.getElementById('init-loading');
     const notInLine = document.getElementById('not-in-line');
     
